@@ -1,0 +1,24 @@
+{
+  "name": "hexacombwebsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomaslb26/HexacombWebsite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomaslb26/HexacombWebsite/issues"
+  },
+  "homepage": "https://github.com/tomaslb26/HexacombWebsite#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
