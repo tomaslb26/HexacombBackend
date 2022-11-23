@@ -9,10 +9,11 @@ const PORT = process.env.PORT || 8081;
 const db = require("./db");
 
 
-app.post('/', async (req, res) => {
-  const table = req.query.table;
+app.get('/data', async (req, res) => {
+  let table = req.query.table
+  let season = req.query.season
   try {
-    const players = await db.selectCustomers(table);
+    const players = await db.selectCustomers(table, season);
     res.send(players);
   } catch (error) {
     res.status(400).send('Error while getting list of repositories');

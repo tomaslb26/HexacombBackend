@@ -9,9 +9,9 @@ async function connect() {
     return connection;
 }
 
-async function selectCustomers(table) {
+async function selectCustomers(table, season) {
     const conn = await connect();
-    const [rows] = await conn.query(`SELECT * FROM ${table};`);
+    const [rows] = await conn.query(`SELECT * FROM ${table + "_" + season};`);
     return rows;
 }
 
