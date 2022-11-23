@@ -14,7 +14,7 @@ app.get('/data', async (req, res) => {
   let season = req.query.season
   let player = req.query.player
   try {
-    const players = await db.selectCustomers(table, season, player, stat);
+    const players = await db.selectCustomers(table, season, player);
     res.send(players);
   } catch (error) {
     res.status(400).send('Error while getting list of repositories');
