@@ -15,4 +15,10 @@ async function selectCustomers(table, season, player) {
     return rows;
 }
 
-module.exports = { selectCustomers }
+async function selectStat(table, season, stat) {
+    const conn = await connect();
+    const [rows] = await conn.query(`SELECT player, \`${stat}\` FROM ${table + "_" + season}; `);
+    return rows;
+}
+
+module.exports = { selectCustomers, selectStat }
