@@ -1,23 +1,16 @@
 {
-  "name": "hexacombbackend",
+  "name": "github-repos-nodejs-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tomaslb26/HexacombBackend.git"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tomaslb26/HexacombBackend/issues"
-  },
-  "homepage": "https://github.com/tomaslb26/HexacombBackend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "axios": "^0.19.2",
+    "express": "^4.17.1"
   }
 }
