@@ -9,9 +9,9 @@ async function connect() {
     return connection;
 }
 
-async function selectCustomers(table, season) {
+async function selectCustomers(table, season, player) {
     const conn = await connect();
-    const [rows] = await conn.query(`SELECT * FROM ${table + "_" + season};`);
+    const [rows] = await conn.query(`SELECT * FROM ${table + "_" + season} WHERE player = ${player};`);
     return rows;
 }
 
