@@ -4,7 +4,7 @@ async function connect() {
         return global.connection;
 
     const mysql = require("mysql2/promise");
-    const connection = await mysql.createConnection(`mysql://u4967_3UmXN3jHeD:5CDy3E15jvX4ohkRmRUe3mTo@discus.bloom.host:3306/s4967_stats`);
+    const connection = await mysql.createConnection(`mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`);
     global.connection = connection;
     return connection;
 }
