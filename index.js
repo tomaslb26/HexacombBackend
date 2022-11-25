@@ -33,6 +33,17 @@ app.get('/stats', async (req, res) => {
   }
 });
 
+app.get('/db', async (req, res) => {
+  let query = req.query.query
+
+  try {
+    const players = await db.selectQuery(query);
+    res.send(players);
+  } catch (error) {
+    res.status(400).send('Error while getting list of repositories');
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
