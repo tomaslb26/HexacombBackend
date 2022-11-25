@@ -34,10 +34,12 @@ app.get('/stats', async (req, res) => {
 });
 
 app.get('/db', async (req, res) => {
-  let query = req.query.query
-
+  let table = req.query.table
+  let season = req.query.season
+  let stat = req.query.stat
+  let limit = req.query.limit
   try {
-    const players = await db.selectQuery(query);
+    const players = await db.selectTop(table, season, stat, limit);
     res.send(players);
   } catch (error) {
     res.status(400).send('Error while getting list of repositories');
