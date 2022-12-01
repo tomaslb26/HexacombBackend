@@ -1,4 +1,3 @@
-
 async function connect() {
     if (global.connection && global.connection.state !== 'disconnected')
         return global.connection;
@@ -33,4 +32,12 @@ async function insertShop(id, type, name, player, desc, x, y, z, first_item, sec
     await conn.query(queryString, [Number(id), type, name, player, desc, Number(x), Number(y), Number(z), first_item, second_item, third_item, image_url, "pending"]);
 }
 
-module.exports = { selectCustomers, selectStat, selectTop, insertShop }
+async function login(username, password) {
+    const bcrypt = require('bcrypt');
+    const conn = await connect();
+    let queryString = "SELECT * FROM auth WHERE username LIKE ?"
+    const [rows] = await conn.query(queryString, [username])
+    return await bcrypt.compare(password, String(rows[0].password))
+}
+
+module.exports = { selectCustomers, selectStat, selectTop, insertShop, login }
