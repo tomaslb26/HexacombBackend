@@ -27,11 +27,10 @@ async function selectStat(table, season, stat) {
     return rows;
 }
 
-async function insertShop(name, player, x, y, z, first_item, second_item, third_item, fourth_item, image_url) {
+async function insertShop(id, type, name, player, desc, x, y, z, first_item, second_item, third_item, image_url) {
     const conn = await connect();
-    let queryString = `INSERT INTO shops (name, player, x, y, z, item_1, item_2, item_3, item_4, image_url) VALUES ('${name}', '${player}', ${Number(x)}, ${Number(y)}, ${Number(z)}, '${first_item}', '${second_item}', '${third_item}', '${fourth_item}', '${image_url}')`
-    console.log(queryString)
-    await conn.query(queryString);
+    let queryString = `INSERT INTO shops (id, type, name, player, description, x, y, z, item_1, item_2, item_3, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    await conn.query(queryString, [Number(id), type, name, player, desc, Number(x), Number(y), Number(z), first_item, second_item, third_item, image_url]);
 }
 
 module.exports = { selectCustomers, selectStat, selectTop, insertShop }
