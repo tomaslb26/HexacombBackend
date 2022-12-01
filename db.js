@@ -37,6 +37,7 @@ async function login(username, password) {
     const conn = await connect();
     let queryString = "SELECT * FROM auth WHERE username LIKE ?"
     const [rows] = await conn.query(queryString, [username])
+    if (rows.length === 0) return false
     return await bcrypt.compare(password, String(rows[0].password))
 }
 
