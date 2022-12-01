@@ -1,15 +1,13 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require("cors");
-const { Client, Events, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
 
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 8081;
 
 const db = require("./db");
-client.login("MTA0NzYyNzkwODE0MDc2NTMyNQ.GAD7dN.7N2TtK70N9y4uSlKvDSY08sugsOgyzEeWhOB6U")
+
 
 
 app.get('/data', async (req, res) => {
@@ -69,23 +67,6 @@ app.get('/insert', async (req, res) => {
     res.status(400).send('Error while getting list of repositories');
   }
 });
-
-app.get('/list', async (req, res) => {
-  try {
-    const guild = client.guilds.cache.find((g) => g.id === "803135919792193537");
-    if (!guild)
-      return console.log(`Can't find any guild with the ID "${id}"`);
-
-    guild.members
-      .fetch()
-      .then((members) =>
-        res.send(members)
-      );
-  } catch (error) {
-    res.status(400).send('Error while getting list of members');
-  }
-});
-
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
