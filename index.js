@@ -4,11 +4,21 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 const PORT = process.env.PORT || 8081;
 
 const db = require("./db");
 
-
+app.post("/update_submission", async (request, response) => {
+  let object = request.body;
+  try {
+    await db.updateSubmission(object);
+    response.send("Success");
+  } catch (error) {
+    console.log(error)
+    response.status(400).send('Error while getting list of repositories');
+  }
+});
 
 app.get('/data', async (req, res) => {
   let table = req.query.table
