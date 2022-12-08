@@ -55,4 +55,10 @@ async function updateSubmission(object) {
     });
 }
 
-module.exports = { selectCustomers, selectStat, selectTop, insertShop, login, getSubmissions, updateSubmission }
+async function getSubmission(id) {
+    const conn = await connect();
+    const [rows] = await conn.query("SELECT * FROM shops where id = ?", id);
+    return rows;
+}
+
+module.exports = { selectCustomers, selectStat, selectTop, insertShop, login, getSubmissions, updateSubmission, getSubmission }

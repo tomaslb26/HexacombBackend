@@ -98,6 +98,16 @@ app.get('/get_submissions', async (req, res) => {
   }
 })
 
+app.get('/get_submission', async (req, res) => {
+  let id = req.query.id
+  try {
+    const submission = await db.getSubmission(id);
+    res.send(submission);
+  } catch (error) {
+    res.status(400).send('Error while getting list of repositories');
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
