@@ -49,8 +49,8 @@ async function getSubmissions() {
 
 async function updateSubmission(object) {
     const conn = await connect();
-    let queryString = "UPDATE shops SET name = ?, player = ?, description = ?, x = ?, y = ?, z = ?, item_1 = ?, item_2 = ?, item_3 = ?, review = ?, status = ? WHERE id = ?"
-    await conn.query(queryString, [object.name, object.player, object.description, object.x, object.y, object.z, object.item_1, object.item_2, object.item_3, object.review, object.status, Number(object.id)], function (err) {
+    let queryString = "UPDATE shops SET name = ?, player = ?, description = ?, x = ?, y = ?, z = ?, item_1 = ?, item_2 = ?, item_3 = ?, review = ?, status = ?, image_url = ? WHERE id = ?"
+    await conn.query(queryString, [object.name, object.player, object.description, object.x, object.y, object.z, object.item_1, object.item_2, object.item_3, object.review, object.status, object.image_url, Number(object.id)], function (err) {
         console.log('Query error: ' + err);
     });
 }
