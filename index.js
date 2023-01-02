@@ -28,6 +28,7 @@ app.get('/data', async (req, res) => {
     const players = await db.selectCustomers(table, season, player);
     res.send(players);
   } catch (error) {
+    console.log(error)
     res.status(400).send('Error while getting list of repositories');
   }
 });
@@ -40,6 +41,7 @@ app.get('/stats', async (req, res) => {
     const players = await db.selectStat(table, season, stat);
     res.send(players);
   } catch (error) {
+    console.log(error)
     res.status(400).send('Error while getting list of repositories');
   }
 });
@@ -53,6 +55,7 @@ app.get('/db', async (req, res) => {
     const players = await db.selectTop(table, season, stat, limit);
     res.send(players);
   } catch (error) {
+    console.log(error)
     res.status(400).send('Error while getting list of repositories');
   }
 });
@@ -74,6 +77,7 @@ app.get('/insert', async (req, res) => {
     await db.insertShop(id, type, name, player, desc, x, y, z, first_item, second_item, third_item, image_url);
     res.send("Success")
   } catch (error) {
+    console.log(error)
     res.status(400).send('Error while getting list of repositories');
   }
 });
@@ -85,6 +89,7 @@ app.get('/login', async (req, res) => {
     if (login) res.send("Login Successful")
     else res.send("Login Failed")
   } catch (error) {
+    console.log(error)
     res.status(400).send('Error while getting list of repositories');
   }
 })
@@ -94,6 +99,7 @@ app.get('/get_submissions', async (req, res) => {
     const rows = await db.getSubmissions();
     res.send(rows);
   } catch (error) {
+    console.log(error)
     res.status(400).send('Error while getting list of repositories');
   }
 })
@@ -104,6 +110,7 @@ app.get('/get_submission', async (req, res) => {
     const submission = await db.getSubmission(id);
     res.send(submission);
   } catch (error) {
+    console.log(error)
     res.status(400).send('Error while getting list of repositories');
   }
 });
